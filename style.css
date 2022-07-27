@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+    display: block;
+    min-width: 992px;
+    margin: 0px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    line-height: 20px;
+    padding: 0px;
+    margin: 0px;
+    top: 0;
+    width: 100%;
+    min-width: 992px;
+    z-index: 99;
+    border-bottom: 1px solid #ECECEC;
+}
+.logo{
+    width: 100px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.logo img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+.header ul {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    list-style: none;
+}
+.header li:not(:last-child){
+    margin-right: 50px;
+}
+.header ul li a{
+   display: flex;
+   flex-direction: column;
+   color: #111;
+   font-weight: 700;
+   text-align: center;
+   text-decoration: none;
+   line-height: 1.6;
+}
+
+li span{
+    color: #5b8f8f;
+    font-size: 13px;
+}
+ul.ddmenu li{
+    width: 80px;
+    display: inline-block;
+    position: relative;
+}
+.submenu{
+    background-color: #5b8f8f;
+    color: #111;
+    text-align: center;
+    text-decoration: none;
+    font-weight: normal;
+    display: block;
+    width: 80px;
+}
+ul.ddmenu a:hover{
+    color: #5b8f8f;
+}
+ul.ddmenu ul{
+    display: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+ul.ddmenu li:hover > ul{
+    display: block;
+}
+
+ul.ddmenu ul li a{
+    text-align: left;
+    font-weight: normal;
+}
+ul.ddmenu ul li a:hover{
+    background-color: gainsboro;
+    color: #5b8f8f;
+}
+ul.ddmenu ul ul{
+    margin: 0;
+    padding: 0;
+    display: none;
+    top: -1px;
+    position: absolute;
+    left: 100%;
+}
+
+
+
+.image  {
+    margin-top: 100px;
+    text-align: center;
+    display: block;
+}
+.image img{
+    box-shadow: 50px 50px 0 #5b8f8f;
+}
+.frame{
+    text-align: center;
+}
+.frame1{
+    margin-top: 100px;
+    font-weight: bold;
+    text-align: center;
+}
+iframe{
+    height: 300px;
+    width: 800px;
+    margin-left: 50px;
+}
+footer{
+    margin-top: 100px;
+    border-top: solid 1px #3f402d;
+    padding-bottom: 3px;
+    background-color: #3f402d;
+}
+footer p{
+    color: white;
+    text-align: center;
+}
