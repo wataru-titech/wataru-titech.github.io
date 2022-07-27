@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/aboutpython.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="website.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a href="program.html"><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+              </ul>
+            </li>
+            <li><a href="theory.html"><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a href="experiment.html"><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">Pythonの基礎2</h2>
+    <p>
+        　今回は<b>フロー制御(if文とfor文)</b>、<b>関数定義</b>、<b>クロージャとラムダ式</b>、<b>ジェネレータ</b>、<b>リスト内表記</b>
+        について説明していきます。
+    </p>
+    <h2 class="heading2" data-number="02">フロー制御</h2>
+    <p>
+    　Pythonのフロー制御としてここでは<b>if文</b>と<b>for文</b>を紹介します。
+    その前にフロー制御の条件式を理解する際に必要となる<b>比較演算子</b>について説明します。
+    Pythonに限らずプログラム言語には比較演算子というものが存在します。以下に重要なものについて示します。<br>
+    <div class="code">
+        <code>
+            == #等しい<br>
+            != #等しくない<br>
+            > #より大きい<br>
+            >= #以上<br>
+            < #未満<br>
+            <= #以下<br>
+        </code>
+    </div>
+    それではまずif文について説明していきたいと思います。これはプログラムの中で条件分岐をしたい時に用います。<br>
+    <div class="code">
+        <code>
+            if 条件式:<br>
+                条件式が成り立つときしたい処理内容<br>
+            else if 条件式:<br>
+                条件式が成り立つときしたい処理内容<br>
+            else:<br>
+                条件式が成り立つときしたい処理内容<br>
+        </code>
+    </div>
+    上記のように書きます。条件式は先ほど説明した比較演算子を使って書いていきます。次にfor文について説明します。
+    これはプログラムの中で繰り返しの処理を行いたいときに用います。<br>
+    <div class="code">
+        <code>
+            for i in オブジェクト:<br>
+                実行する内容<br>
+        </code>
+    </div>
+    iは繰り返される変数であり、オブジェクトの部分は繰り返したい回数などが入ります。オブジェクトの部分は
+    各自使いたい用途に応じて調べることをお勧めします。
+    </p>
+    <h2 class="heading3" data-number="03">関数定義</h2>
+    <p>
+        　ここでは関数の定義について説明します。Pythonでは<b>def</b>を使って
+        独自の関数を定義することができます。例えば'こんにちは'と出力する関数say-hello()を作ってみたいと思います。<br>
+        <div class="code">
+        <code>
+            def say-hello():<br>
+                print('こんにちは')<br>
+        </code>
+        </div>
+        このようにまず<b>def 関数名</b>で関数名を定義します。そして関数の中身として処理したい内容を記述します。
+        また、このような関数もあります。<br>
+        <div class="code">
+            <code>
+                def add(a,b):<br>
+                    c = a+b <br>
+                    return  c <br>
+            </code>
+        </div>
+        前の関数と違うところは<b>かっこの中身</b>と<b>return</b>という記述です。
+        これはそれぞれ<b>引数</b>と<b>返り値</b>と呼ばれるものです。引数は関数の変数のようなもので、返り値は関数の
+        出力に該当します。また、複数の引数をまとめて関数に渡したい場合は<br>
+        <div class="code">
+            <code>
+                def add(*args):<br>
+                    return args[0]+args[1]<br>
+            </code>
+        </div>
+        のように関数を定義します。<b>*args</b>の部分が複数の引数を表しています。
+        ここで引数に辞書オブジェクトを指定したければ<b>**args</b>のように記述すればよいです。
+    </p>
+    <h2 class="heading4" data-number="04">クロージャとラムダ式</h2>
+    <p>
+        　ここでは関数についても少し詳しいことを取り扱っていきます。まず<b>クロージャ</b>についてです。
+        クロージャは<b>関数の中に関数を入れる</b>仕組みのことです。
+        <div class="code">
+            <code>
+                def outer(a,b):<br>
+                    def inner(c):<br>
+                        return c*(a+b)<br>
+                    retrun inner<br>
+            </code>
+        </div>
+        これがクロージャです。まず最初の関数のオブジェクトを指定し、変数にその関数を格納します。
+        そしてもう一つのオブジェクトを指定すれば、返り値として<b>inner</b>を指定すればvalueを得ることができます。
+        次に<b>ラムダ式</b>についてです。これは<b>関数をdefで定義せずに記述</b>すること仕組みのことです。
+        <div class="code">
+            <code>
+                C = (lambda a,b:2*a+3*b)(a,b)<br>
+            </code>
+        </div>
+        これがラムダ式で記述された関数です。最初の<b>lambda a,b</b>と最後の<b>(a,b)</b>は関数の引数で
+        真ん中の<b>2*a+3*b</b>が返り値になります。このように特別な名前をつけずに定義する関数のことを<b>無名関数</b>といいます。
+        また複数のデータを用いて上記の処理をしたい場合は
+        <div class="code">
+            <code>
+                data1 = [1,2,3,4]<br>
+                data2 = [5,6,7,8]<br>
+                result = list(map(lambda a,b:2*a+3*b,data1 data2))<br>
+            </code>
+        </div>
+        と記述すればよいでしょう。ここで用いられている<b>map関数</b>は一つ目の引数に<b>処理内容</b>、二つ目の引数に<b>処理対象のリスト</b>を指定して用いています。
+
+    </p>
+    <h2 class="heading5" data-number="05">ジェネレータ</h2>
+    <p>
+    　引き続き関数について説明します。次は<b>ジェネレータ</b>というものです。ジェネレータは関数の中に
+    <b>"yield 処理内容"</b>を複数書き、関数を<b>next関数</b>で呼び出して1つずつ処理をしていく機能です。
+    <div class="code">
+        <code>
+            def linestyle_generator():<br>
+                linestyle = ["-","--","_",":"]<br>
+                lineID = 0<br>
+                while True<br>
+                    yield linestyle[lineID]<br>
+                    lineID = (lineID+1)%len(linestyle)<br>
+
+
+            LS = linestyle_generator()<br>
+            for i in range(5):<br>
+                print(next(LS))<br>
+        </code>
+    </div>
+    このようにすると"-"が出力された後に、"--"が出力されと関数の中身を一気に実行するのではなく、
+    呼び出す内容を変えたい場合に使います。ちなみにこのプログラムはグラフのラインのスタイルを変えるものになっています。
+    </p>
+    <h2 class="heading6" data-number="06">リスト内表記</h2>
+    　ここでは最後にリスト内表記について説明します。
+    <p>
+        <div class="code">
+            <code>
+                t = [1,2,3,4,5]<br>
+                r1 = [i for i in t]<br>
+                print r<br>
+                #実行結果<br>
+                r1 = [1,2,3,4,5]<br>
+            </code>
+        </div>
+        このように簡略化して書くことができます。これを<b>リスト内表記</b>といいます。
+    </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>
