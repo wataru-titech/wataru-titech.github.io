@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/aboutpython.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="website.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a href="program.html"><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+              </ul>
+            </li>
+            <li><a href="theory.html"><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a href="experiment.html"><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">Pythonの基礎1</h2>
+    <p>
+        　これからPythonの基礎の基礎を何回かに分けて説明していきます。基本的に僕が使ったPythonの知識をまとめたものになっているので、
+        全てを網羅しているわけでないことをご了承ください。今回は<b>変数</b>、<b>簡単な算術計算</b>、<b>リストとタプル</b>、<b>辞書</b>について
+        説明していきます。
+    </p>
+    <h2 class="heading2" data-number="02">データと型</h2>
+    <p>
+        　基本的にPythonでは型の宣言は必要ありません。また、Pythonでは文字列を記述するには
+    「'」か「"」を使います。他にも「\」で\\、「\n」で改行、「\t」でタブを表します。ここでは特に文字列に焦点を当てます。
+    文字列の連結は　"文字列"+"文字列"、繰り返し表示は'文字列'**5と書くことができます。
+    このような文字列の文字数をカウントしたい場合は<b>len関数</b>       
+    を用いればいいです。
+    </p>
+    <h2 class="heading3" data-number="03">変数</h2>
+    <p>
+        　Pythonではあらゆるものがオブジェクトです。オブジェクトとはデータを抽象的に表したものです。
+        数値、文字列、ファイルもすべてオブジェクトになります。変数はこのオブジェクトのことを指し、変数を格納する<b>箱</b>のことを<b>型</b>
+        といいます。また、変数には<b>ローカル変数</b>と<b>グローバル変数</b>の2種類が存在します。ローカル変数とは関数の中でだけで利用可能な変数のことです。
+        一方でグローバル変数は、関数の中で代入が行われない変数のことを言います。この二つの使い分けは関数を用いるときに特に重要なので、慎重に使う必要があります。
+    </p>
+    <h2 class="heading4" data-number="04">簡単な算術計算</h2>
+    <p>
+        　基本的にPythonは電卓でできるような計算(例えば足し算や引き算)を行うことができます。+はいうまでもなく足し算を表します。
+        -は引き算、*は掛け算、**はべき乗を表します。他にも/は割り算、//は小数部を切り捨てた整数値(<b>商</b>)を返します。また、余りを求めたいときは%を用います。
+        少し話の内容から脱線しますが、Pythonでは一般にコード中に#が出現すると、それ以降の分はコメントとして扱われます。
+    </p>
+    <h2 class="heading5" data-number="05">リストとタプル</h2>
+    <p>
+        　Pythonでは配列に該当するものが二つ存在します。<b>リスト</b>と<b>タプル</b>です。
+        リストとタプルはほとんど同じですが、タプルで作成されたオブジェクトの要素は<b>変更できない</b>という特徴があります。
+        したがって変更したくないものをタプルを用いて定義します。この二つはともに複数の要素を格納するために用います。
+        <h4>リスト</h4>
+        <div class="code">
+            <code>
+                list = [数値,数値,数値]<br>
+                list = ["文字列","文字列","文字列"]
+            </code>
+        </div>
+        
+        <h4>タプル</h4>
+        <div class="code">
+            <code>
+                taple = (数値,数値,数値)<br>
+                taple = ("文字列","文字列","文字列")
+            </code>
+        </div>
+        
+    </p>
+    <h2 class="heading6" data-number="06">辞書</h2>
+    <p>
+        <div class="code">
+            <code>
+                d = {'key':value}<br>
+            </code>
+        </div>
+    
+    辞書はkeyとvalueで構成されます。d['key']を指定すればvalueを得ることができます。しかし
+    逆はできません。具体的にはd[value]を指定してkeyを得ることはできないということです。
+    </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>

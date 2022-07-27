@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/aboutpython.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="website.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a href="program.html"><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+              </ul>
+            </li>
+            <li><a href="theory.html"><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a href="experiment.html"><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">Pythonの基礎3</h2>
+    <p>
+        　ここではPythonの<b>ライブラリ</b>について説明します。まずモジュールの中には、いくつかのクラスや関数が含まれています。そのモジュールをいくつか集めてまとめたものをパッケージといいます。
+        そしていくつかのパッケージをまとめて一つのライブラリとしてインスールできるようにしたものがライブラリといいます。ライブラリには、Pythonに付属していてすぐに使える標準ライブラリと、ダウンロードなど追加インストールをしてから
+        利用する外部ライブラリがあります。今回は<b>標準ライブラリ</b>をいくつか紹介していきます。(自分が使ったライブラリについて)
+    </p>
+  
+       <figure><img src="library_01.png" alt="library"><figcaption>モジュール・パッケージ・ライブラリの関係</figcaption></figure>
+
+    <h2 class="heading2" data-number="02">NumPyについて</h2>
+    <p>
+    　ここでは、Pythonで数値計算を高速に行うためのライブラリである<b>NumPy</b>について説明します。
+    NumPyを実際に使用するには以下のコードを記述します。
+    <div class="code">
+    <code>
+        import numpy as np<br>
+    </code>
+    </div>
+    このようにしてモジュールであるNumPyをnpという名前でインポートすることができます。
+    よく使う機能としては<a href=https://numpy.org/doc/stable/reference/routines.math.html target="_blank" rel="noopener noreferrer">こちらのページ</a>がよくまとまっているので、
+    これを参照してください。用途に応じその都度しらべることが有用だと思います。
+    
+    </p>
+    <h2 class="heading3" data-number="03">Mtplotlibについて</h2>
+    <p>
+     　ここでは様々なグラフを作成することができるPythonにおけるグラフ描画の標準的なライブラリである<b>Matplotlib</b>について説明します。
+     Matplotlibを実際に使用するには以下のコードを記述します。
+     <div class="code">
+         <code>
+             import matplotlib.pyplot as plt<br>
+         </code>
+     </div>
+     このようにしてモジュールであるMatplotlibをpltという名前でインポートすることができます。
+     よく使う機能としては<a href="https://matplotlib.org/stable/api/pyplot_summary." target="_blank" rel="noopener noreferrer">こちらのページ</a>を参照してください。
+     また、作成した図を保存したい場合は以下のコードを記述します。
+     <div class="code">
+         <code>
+             fig.savefig("ファイル名")<br>
+         </code>
+     </div>
+     こうすることによって指定したファイル名で保存されます。
+    </p>
+    <h2 class="heading4" data-number="04">SymPyについて</h2>
+    <p>
+       　ここでは代数計算(因数分解をしたり、方程式を解いたり、微分積分を計算したりできる。)を行うPythonのライブラリである<b>SymPy</b>について説明します。
+       SymPyを実際に使用するには以下のコードを記述します。
+       <div class="code">
+           <code>
+               import sympy as sp<br>
+           </code>
+       </div>
+       このようにしてモジュールであるSymPyをspという名前でインポートすることができます。
+       よく使う機能としては<a href="https://docs.sympy.org/latest/index.html" target="_blank" rel="noopener noreferrer">こちらのページ</a>がよくまとまっているので参照してください。
+    </p>
+   <h2 class="heading5" data-number="05">おわりに</h2>
+   <p>
+       　以上でPythonの解説は終わりになります。全てを網羅してるわけではなく、僕が<b>プログラムを書く上で用いたことについて
+       まとめたもの</b>になっていることを再度明記しておきます。これからはこれらを用いて様々なプログラムを紹介していきます。
+       僕自身プログラムを実際に書く中で学ぶことの方が多かったので、プログラミングを勉強する方はまずどんなことをしたいのかを明確にし、
+       それを実現するためにはどのようなプログラムの知識が必要なのかを理解した上で、実際にプログラムを書きながらわからないことがあったら調べるといったような勉強方法で進めていくことをお勧めします。
+   </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>
