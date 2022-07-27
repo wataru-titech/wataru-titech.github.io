@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          TeX: { equationNumbers: { autoNumber: "AMS" }},
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          },
+          "HTML-CSS": { matchFontHeight: false },
+          displayAlign: "left",
+          displayIndent: "2em"
+        });
+      </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/experiment.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="website.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a href="program.html"><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+              </ul>
+            </li>
+            <li><a href="theory.html"><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a href="experiment.html"><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+<div class="zentai">
+    <h2 class="heading1" data-number="01">卒業研究のテーマ</h2>
+    <p>
+     ここでは卒業研究について説明していきます。僕のテーマは<b>量子限界まで安定化されたレーザー光源の開発</b>です。タイトルに量子限界とかかっこいい感じの名前がありますが、
+     実際卒業研究中に体調を崩してしまいうまく研究を進めることはできませんでした。(なので研究したところまで書きます。結果が出てないですが許してください)
+    </p>
+  
+    <h2 class="heading2" data-number="02">研究の動機</h2>
+    <p>
+       ここでは研究の動機について説明していきます。僕の研究では主にレーザー光に焦点を当てて研究をしました。レーザー光は、力・角速度・時間などの精密測定には欠かすことができないものです。
+       そのためレーザー光は重力波検出器や量子測定などの精密測定によく応用されています。これらの精密測定への応用において、レーザー光自体が持つ古典的な揺らぎが測定の邪魔をし、大きな課題となっています。
+       特に測定周波数帯域が低いような場合(典型的にはMHzよりも低い場合)では、その影響は顕著に表れるようになります。先ほど紹介した重力波検出器や量子計測は、測定周波数が低周波数帯域であるのでレーザー光源の安定化を
+       行うことはとても重要になっています。ここではレーザー光の雑音を<a href="noise.html">雑音</a>のページで導出した<b>相対強度雑音</b>で定量的に評価していきます。
+    </p>
+    <h2 class="heading3" data-number="03">実験の内容</h2>
+    <p>
+        それでは実験の内容を説明していきます。まず大まかな実験の流れ空です。本研究の目的はレーザー光源の安定化でした。そこで、能動的なフィードバック制御でレーザー光源の強度を安定化するシステムを構築し、
+        その性能評価をすることを目指しました。しかし、最初に述べましたが、今回の卒業研究では僕の体調不良が原因で真のレーザー強度雑音の安定度を評価することができませんでした。(ここでいう“真の”とはアウトオブループから実験データを評価できなかったことを指す。後に詳しく説明する)
+        僕が行ったのは、制御系の構築、フィルターをデジタル回路で自作、それを用いて能動的なフィードバック制御によるレーザー強度安定化、そして一巡伝達関数の測定によって制御でレーザー強度雑音をどのくらい安定化できるかを見積もる(インループの測定結果を用いて)までです。それではこれらについて詳しく説明していきます。
+        まず強度安定化をどのように行ったのかについてです。
+        <figure><img src="卒研発表_強度安定化.png" alt="library"><figcaption>強度安定化の模式図</figcaption></figure>
+        これは強度安定化の模式図になります。強度安定化はこの図の光の強度変化$\delta P$を検出し、その光の強度変化を打ちける信号を強度変調器に送ることによって行うことができます。これを<b>能動的なフィードバック制御系</b>といいます。
+        続いて実験のセットアップを見ていきたいと思います。
+        <figure><img src="卒研発表_実験のセットアップ.png" alt="library"><figcaption>実験のセットアップ</figcaption></figure>
+        これが本実験のセットアップです。光源から出た波長1064nmでパワー2Wのレーザーがこの黒い部分で20mWまで強度が落とされ、強度変調器を通り、ビームスプリッターで1:1に分けられ、2つの光検出器で測定されます。
+        ここでレーザーの強度を落とす理由としては、光検出器の最大受光量が決まっているからです。そして、片方の光検出器で強度変化$\delta P$を検出し、制御回路、発信機を介して、強度変化を打ちける信号を強度変調器に送ります。その信号をもとに強度変調器で光の強度が変調されるという仕組みなっています。
+        この図からわかるようにフィードバック制御系ではこのようなループが形成されます。これを<b>インループ</b>と呼び、制御のない側を<b>アウトオブループ</b>と呼び、区別しています。インループの信号は特に一巡伝達関数の測定に用いられ、制御でレーザー強度雑音をどのくらい安定化できるかを見積もることができます。
+        一方でアウトオブループの信号では今回はできませんでしたが、真のレーザー強度雑音の安定度の評価に用いることができます。それでは次にセンサー、アクチュエータ、フィルターそれぞれについて説明していきます。
+
+
+    </p>
+    <h2 class="heading4" data-number="04">ファブリペローマイケルソン干渉計の重力波に対する応答 </h2>
+<p>
+    ここではマイケルソン干渉計に<b>ファブリペロー共振器</b>を組み込んだ<b>ファブリペローマイケルソン干渉計</b>の重力波に対する応答について説明します。
+    まず始めに、ファブリペロー共振器の説明をしていきます。ファブリペロー共振器とは2枚の鏡を向かい合わせることによって光を往復させることができる装置のことです。
+    左側よりレーザーが入射されます。共振器の左側の鏡をフロントミラー、右側の鏡をエンドミラーと呼びます。この2枚の鏡の距離をLとします。フロントミラーの反射率、透過率をそれぞれ$t_{F}$、$r_{F}$とし、
+    エンドミラーの反射率、透過率をそれぞれ$r_{E}$、$t_{E}$とします。またフロントミラーに入射する電場を$E_i$、反射する電場を$E_r$、エンドミラーを透過する電場を$E_t$としています。
+    <figure><img src="ファブリペロー共振器.png" alt="library"><figcaption>ファブリペロー共振器の模式図</figcaption></figure>
+</p>
+<p>
+まず反射光の振幅を考えてみます。共振器内での往復を考えると以下のように求まります。
+\begin{align}
+    E_r &=  E_i(-r_F)+E_i t^2_F r_E e^{-i\phi}+E_i t^2_F r^2_E r_F i^{-2i\phi} + E_i t^2_F r^2_E r^2_F e^{-3i\phi}+…… \\
+        &= E_i(-r_F) + E_i t^2_F r_E i^{-i\phi}\sum_{n=0}^{\infty}\left(r_F r_E e^{-i\phi}\right)^n \\
+        &= E_i\left(-r_F+\frac{t^2_F r_E e^{-i\phi}}{1-r_F r_E e^{-i\phi}}\right)
+\end{align}
+ここで$\phi$は光が共振器を往復するときの位相変化を表していて、レーザーの角周波数を$\omega$とすると<b>$\phi = \frac{2L\omega}{c}$</b>となります。
+同様にして透過光の振幅も考えます。
+\begin{align}
+    E_t &= E_i t_F t_E e^{-\frac{i\phi}{2}}+E_i t_F r_E r_F t_E e^{-\frac{3i\phi}{2}}+E_i t_F r^2_E r^2_F t_E e^{-\frac{5i\phi}{2}}+…… \\
+        &= E_i t_F t_E e^{-\frac{i\phi}{2}}\sum_{n=0}^{\infty}\left(r_F r_E e^{-i\phi}\right)^n \\
+        &= E_i\frac{t_F t_E e^{-\frac{i\phi}{2}}}{1-r_E r_F e^{-i\phi}}
+\end{align}
+以上二つの式より、ファブリペロー共振器の反射率$r_{cav}$と透過率$t_{cav}$は
+\begin{align}
+    r_{cav}(\phi) &= -r_F+\frac{t^2_F r_E e^{-i\phi}}{1-r_F r_E e^{-i\phi}} \\
+    t_{cav}(\phi) &= \frac{t_F t_E e^{-\frac{i\phi}{2}}}{1-r_F r_E e^{-i\phi}}
+\end{align}
+となります。また、透過光と反射光の振幅より透過光と反射光の強度$P_i$と$P_r$を求めることができます。以下ではそれを示します。
+\begin{align}
+    P_t &= |E_r|^2
+        &= \frac{|(t_F^2+r_F^2)r_E-r_F)|^2+4r_F r_E (t_F^2+r_F^2)\sin^2(\phi/2)}{(1-r_F r_E)^2+4r_E r_F \sin^2(\phi/2)}|E_i|^2
+\end{align}
+\begin{align}
+    P_i &= |E_i|^2
+        &= frac{(t_F t_E)^2}{(1-r_E r_F)^2+4r_E r_F \sin^2(\phi/2)}|E_i|^2
+\end{align}
+透過光強度$P_i$が最大になるとき共振器内の光強度が最大になるときで、入射光とファブリペロー共振器が共振しているということができます。
+この共振条件は<b>$\phi = 2\pi m $(mは自然数)</b>となります。これは$P_i$の式の分母が最小になることから明かです。この条件を光の周波数と波長の関係を用いれば<b>$2L = m\lambda$(mは自然数)</b>
+と書き直すことができます。この式から共振条件は共振器の往復長がレーザー波長$\lambda$の整数倍になっていることがわかります。
+これらのことを踏まえて<b>フリースペクラルレンジ(FSR)</b>と<b>フィネス</b>を導出していきます。
+まずFSRについてです。これは共振と共振の間の周波数差$\nu_{FSR}=\frac{c}{2\pi}$のことを言います。
+次にフィネスについて説明していきます。これは共振器内の光がどれくら往復できるかを示したものになります。フィネスを求めるためにはFSRと透過強度ピークの半値全幅$\nu_{FWHM}$の比をとる必要があります。
+そこで$\nu_{FWHM}$を求めます。これは透過光強度$P_i$を用いて求めることができます。
+\begin{equation}
+    \frac{1}{1+\frac{4r_F r_E}{(1-r_F r_E)^2}\sin^2\left(\frac{\pi L \nu_{FWHM}}{c}\right)}=\frac{1}{2}
+\end{equation}
+この式を$\frac{\pi L \nu_{FWHM}}{c}=\frac{\pi \nu_{FWHM}}{2\nu_{FSR}} << 1$として解くと$\sin$の展開ができるので
+\begin{equation}
+    \nu_{FWHM}=\frac{c(1-r_F r_E)}{2\pi L \sqrt{r_E r_F}}
+\end{equation}
+となります。よってフィネス$\mathcal{F}=\frac{\nu_{FSR}}{\nu_{FWHM}}=\frac{\pi\sqrt{r_E r_F}}{1-r_E r_F}$と求まりました。
+ここで共振器の分類について少しふれておきます。共振器に用いる鏡の反射率の大小関係によって三種類の分類がされます。
+<ul>
+    <li>$r_F < r_E  \Rightarrow $ オーバーカップリング共振器</li>
+    <li>$r_F = r_E \Rightarrow $ クリティカルカップリング共振器</li>
+    <li>$r_F > r_E \Rightarrow $ アンダーカップリング共振器 </li>
+</ul>
+それではここからファブリペローマイケルソン干渉計の重力波に対する応答について説明していきます。ファブリペローマイケルソン干渉計は
+ファブリペロー共振器を組み込み、実効的に基線長を伸ばし重力波の引き起こす差動変化を増幅します。重力波に対する応答はマイケルソン干渉計と同様に
+伝達関数で書けます。以下にそれを示します。
+\begin{align}
+    \phi_{GM} &= \int_{-\infty}^{\infty}d\omega H_{FPMI}(\omega)h(\omega)e^{i\omega t} \\
+    H_{FPMI} &= \frac{t_{F}^2 r_E}{-r_F+(r^2_F+t^2_F)r_E}\frac{1}{1-r_F r_E e^{-2i\frac{L\omega}{c}}}\frac{2\Omega}{\omega}\sin\left(\frac{L\omega}{c}\right)e^{-i\frac{L\omega}{c}}
+\end{align}
+鏡にロスがなく$(r^2_F+t^2_F=1)$、鏡の反射率が1に近いとし、重力波の位相遅れが十分小さい($\frac{L\omega}{c} << 1$)とすると
+\begin{equation}
+    |H_{FPMI}(\omega)| \approx \frac{4L\Omega}{c(1-r_E r_F)}\frac{1}{\sqrt{1+\frac{r_E r_F}{(1-r_E r_F)^2}\frac{4L^2 \omega^2}{c^2}}}
+\end{equation}
+となります。ここでこカットオフ周波数$f_c$を定義すると
+\begin{equation}
+    f_c = \frac{1}{2\pi}\frac{(1-r_E r_F)}{sqrt{r_E r_F}}\frac{c}{2L}=\frac{c}{4L\mathcal{F}}
+\end{equation}
+となります。この時のファブリペローマイケルソン干渉計の重力波に対する応答は
+\begin{equation}
+    |H_{FPMI}(\omega)| \approx \frac{4L\Omega}{c(1-r_E r_F)}\frac{1}{\sqrt{1+\frac{f^2}{f^2_c}}}
+\end{equation}
+となります。ここでマイケルソン干渉計の応答と比較すると
+\begin{equation}
+    |H_{FPMI}(\omega)| \approx \frac{4}{T_F} \frac{1}{\sqrt{1+\frac{f^2}{f^2_c}}} |H_{MI}(\omega)|
+\end{equation}
+となります。$T_F$は鏡のパワーに対する反射率です。この式からわかるようにゲインをもった1次のローパスフィルターに似た挙動を示します。言い換えると
+重力波の引き起こす差動変位は検出器内の共振器で増幅されますが、カットオフ周波数$f_c$よりも速い周波数の重力波に対しては共振器内で差動変位の位相が反転し減衰します。この周波数のことを<b>キャビティポール</b>といい、
+共振器を持つ干渉計の帯域を決める一つの指標になります。
+ここまでがファブリペローマイケルソン干渉計の重力波に対する応答についての説明でした。他にも<b>RSE干渉計</b>や<b>SR干渉計</b>などの干渉計もありますので、機会があれば紹介したいと思います。
+</p>
+</div>
+<footer>
+    <p>Copyright (C) All Rights Reserved.</p>
+</footer>
+</body>
+     
