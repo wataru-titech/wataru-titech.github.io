@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99FMZG6LXG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-99FMZG6LXG');
+</script>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="isMqF1Bk1TWMG3m-T6oNrZ4V_bOdk3fh-WQXyHTBgzk" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/java.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="index.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+                  <li class="submenu">Java</a>
+                    <ul class="submenu">
+                        <li><a href="java1.html">Java1</a></li>
+                        <li><a href="aboutpython.html">Java2</a></li>
+                        <li><a href="aboutpython2.html">Java3</a></li>
+                        <li><a href="aboutpython3.html">Java4</a></li>
+                    </ul>
+                    </li>
+              </ul>
+            </li>
+            <li><a><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">Javaについて</h2>
+    <p>
+        　これからJavaの基礎について何回かに分けて説明していきます。僕がJavaの勉強を始めた目的はアプリ開発を始めていきたいからです。ここでは<b>Javaによる開発の基礎知識</b>、<b>Javaのプログラムの基本構造</b>について
+        説明していきます。Javaを始めるにあたって開発環境を構築しましたが、その説明は割愛します。
+    </p>
+    <h2 class="heading2" data-number="02">Javaによる開発の基礎知識</h2>
+    <p>
+        　Javaでのプログラム開発は3ステップで行います。1ステップは<b>ソースコードの作成</b>です。これは末尾を「.java」にした<b>ソースファイル</b>
+        にJavaが定める文法に従ってコンピューターへの命令を記述します。2ステップは<b>コンパイル</b>です。ソースコードはそのままでは実行できません。そこで
+        まずコンパイルという処理を行い、ソースファイルを<b>クラスファイル</b>に変換します。これは、コンピューターが読みやすいように変換された<b>バイトコード</b>
+        というものが中に詰まっています。最後に3ステップは<b>実行</b>です。バイトコードは、ソースコードに比べて実行に適した姿であるものの、まだ実行することができません。
+        そこで、<b>インタプリンタ</b>と呼ばれるソフトウェアに対して、バイトコードの変換と実行を依頼します。インタプリンタの内部には<b>JVM(Java Virtual Machine)</b>という仕組みを持っており、
+        クラスファイル内のバイトコードを少しずつ読みながら、CPUが解釈できるマシン語に翻訳するとともに、CPUに送って処理を実行させます。
+        こうしてコンピューターは、ソースコードで指示した通り動くのです。
+    </p>
+    <h2 class="heading3" data-number="03">Javaのプログラムの基本構造</h2>
+    <p>
+        　まずはJavaのプログラムの全体像を見てみます。
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        System.out.println("");<br>
+                        System.out.println("");<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        　Javaのソースコードには、{}で囲まれた部分が多く登場します。これを<b>ブロック</b>といいます。一番外側のブロックを<b>クラスブロック</b>、
+        内側のブロックを<b>メソッドブロック</b>といいます。ソースコードを記述していくのはメソッドブロックの中です。また、クラスブロックの名前はJavaソースファイルの名前と
+        一致させる必要があります(今回のソースファイルだとMain.javaにする必要)。基本的にソースファイルの名前は、コンピューターに対する指示・命令に即した名前をつけるようにした方がいいです。
+        そうすることで、このプログラムは何をしたいのかを作成者以外の人にも伝えることができるからです。
+        　次に変数の宣言について説明していきます。変数とは<b>データを格納するためのコンピューター内部に準備される箱</b>のようなもので、数値や文字列など様々な情報を入れたり、取り出したり出来ます。
+        それでは実際に変数を利用している例を見てみます。
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        int age;<br>
+                        age = 30;<br>
+                        System.out.println(age);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                30
+            </code>
+        </div>
+        　このプログラムでは変数ageに値「30」を入れ、それを取り出して画面に表示させています。このように変数に値を入れることを<b>代入</b>、
+        取り出すことを<b>取得</b>と呼びます。変数を宣言するときは以下のようにします。
+        <h4>変数宣言の文</h4>
+        <div class="code">
+            <code>
+                型　変数名;
+            </code>
+        </div>
+        　型とは<b>変数に入れることのできるデータの種類</b>のことです。intは<b>整数</b>を表す型です。他にも様々なデータ型があります。
+        使用頻度が高いものだけここに挙げておきます。
+        <h4>代表的なデータ型</h4>
+        <div class="code">
+            <code>
+                整数　int 変数名<br>
+                小数　double 変数名<br>
+                真偽値　boolean 変数名<br>
+                文字　char 変数名<br>
+                文字列　String 変数名
+            </code>
+        </div>
+        　また、変数を定数として扱いたいときは変数の宣言の前に<b>final</b>をつけることで、定数となります。
+    </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>
