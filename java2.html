@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99FMZG6LXG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-99FMZG6LXG');
+</script>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="isMqF1Bk1TWMG3m-T6oNrZ4V_bOdk3fh-WQXyHTBgzk" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/java.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="index.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+                  <li class="submenu">Java</a>
+                    <ul class="submenu">
+                        <li><a href="java1.html">Java1</a></li>
+                        <li><a href="java2.html">Java2</a></li>
+                        <li><a href="java3.html">Java3</a></li>
+                        <li><a href="java4.html">Java4</a></li>
+                        <li><a href="java5.html">Java5</a></li>
+                    </ul>
+                    </li>
+              </ul>
+            </li>
+            <li><a><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">式と演算子</h2>
+    <p>
+        　前回はJavaについてと変数宣言の文について説明していきました。今回は様々な計算を行うための<b>計算の文</b>について説明していきたいと思います。
+    </p>
+    <h2 class="heading2" data-number="02">計算の文</h2>
+    <p>
+        　まずは以下に具体的な計算のプログラムを示します。
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        int a;<br>
+                        int b;<br>
+                        a = 20;<br>
+                        b = a + 5;<br>
+                        System.out.println(a);<br>
+                        System.out.println(b);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                20<br>
+                25
+            </code>
+        </div>
+        　このように計算を書くことができます。ここで、「a」、「b」、「5」をJavaを含む多くのプログラミング言語では<b>オペランド</b>といいます。
+        また、「+」、「=」を<b>演算子</b>といいます。どんなに複雑な式でもこのオペランドと演算子の2つの要素で構成されます。それではもう少しオペランドについて詳しく見てみたいと思います。
+        オペランドの中でも数字や文字列など、ソースコードに記述されている具体的な値を<b>リテラル</b>と呼びます。そして、リテラルはデータ型を持っています。このようなリテラルを記述する際は、ときどき<b>エスケープシーケンス</b>
+        と呼ばれるものが使われます。以下にいくつか紹介しておきます。
+        <div class="code">
+            <code>
+                \"　二重引用符記号(")<br>
+                \'　引用符記号(')<br>
+                \\　円記号(\)<br>
+                \n　改行
+            </code>
+        </div>
+        式のオペランドとして利用できるのはリテラルのほかにも「変数」「定数」「命令の実行結果」などがあります。計算をしていくとこのようなオペランドが、どのような順番で計算されていくのかを知る必要があります。
+        そこで次にその計算の順番について説明していきます。Javaが式に従って計算処理をすることを、式の<b>評価</b>と呼びます。演算子は周囲のオペランドの情報を使って計算を行い、それらオペランドを巻き込んで結果に化けるといったところです。
+        その時の計算の優先順位は「*」「/」「+」「-」となります。演算子にはこの4つ以外にも様々なものがあります。以下でそれを紹介しておきます。
+        <div class="code">
+            <code>
+                %　剰余<br>
+                +=　左辺と右辺を加算して左辺に代入<br>
+                -=　左辺から右辺を編纂して左辺に代入<br>
+                *=　左辺と右辺を乗算して左辺に代入<br>
+                /=　左辺と右辺を徐算して左辺に代入<br>
+                ++　値を1増やす(インクリメント演算子)<br>
+                --　値を1減らす(デクリメント演算子)
+            </code>
+        </div>
+    </p>
+    <h2 class="heading3" data-number="03">型の変換</h2>
+    <p>
+        　ここでは型の変換について説明していきます。Javaは式を評価する過程で自動的に型を変換してくれる機能があります。この型の変換はとても便利な機能です。
+        原則は、ある型で宣言された変数には、その型しか代入できません。しかし、間違えて型の違う変数を代入してしまったとしても、この機能があればエラーが少なくなります。
+        これは変数を箱だとイメージしていただくとわかりやすいと思います。「小さい箱」に入るものは、「大きい箱」にも入るのは容易にイメージできると思います。
+        つまり、「小さな箱」の変数の値を「大きな箱」の変数に代入しても、自動的に箱の大きさが変換されて代入されるということです。各数値型の大小関係は、整数型は「byte型」「short型」「int型」「long型」の順に大きくなっていきます。
+        浮動小数点型は「float型」「double型」の順に大きくなっています。ここまで変数の型の自動変換を見ていきましたが、演算時の自動型変換もあります。以下に数値型同士の演算時の型変換のルールを示しておきます。
+        <div class="code">
+            <code>
+                ・片方のオペランドがdoubleなら、他方をdoubleに型変換して揃える。<br>
+                ・片方のオペランドがfloatなら、他方をfloatに型変換して揃える。<br>
+                ・片方のオペランドがlongなら、他方をlongに型変換して揃える。<br>
+                ・片方のオペランドがintなら、他方をintに型変換して揃える。<br>
+                ・shortやbyteのオペランドはintに型変換される。
+            </code>
+        </div>
+    </p>
+    <h2 class="heading4" data-number="04">命令実行の文</h2>
+    <p>
+        　話は変わって、命令実行の文について説明していきます。命令実行の文はJavaが準備してくれている様々な命令を呼び出すための文です。
+        この文を使えば「足し算」や「代入」より、ずっと高度な処理をコンピューターに行わせることができます。いくつか代表的なものを以下に示しておきます。
+        <h4>改行せずに画面に文字を表示</h4>
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        String name = "すがわら";<br>
+                        String message;<br>
+                        message = name + "さん、こんにちは";<br>
+                        System.out.println(message);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                すがわらさん、こんにちは
+            </code>
+        </div>
+        <h4>2つの値を比較して大きい方の数値を代入する</h4>
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        int a = 5;<br>
+                        int b = 3;<br>
+                        int m = Math.max(a,b);<br>
+                        System.out.println(m);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                5
+            </code>
+        </div>
+        <h4>文字列を数値に変換する</h4>
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        String age = "31";<br>
+                        int n = Integer.parseInt(age);<br>
+                        message = name + "さん、こんにちは";<br>
+                        System.out.println(n+1);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                32
+            </code>
+        </div>
+        <h4>乱数を発生させる</h4>
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        int r = new java.util.Random().nextInt(9);<br>
+                        System.out.println(r);<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                0~9のランダムで出る数
+            </code>
+        </div>
+        <h4>キーボードから入力を受け付ける</h4>
+        <div class="code">
+            <code>
+                public class Main{<br>
+                    public static void main(String[] args){<br>
+                        System.out.println("あなたの名前を入力してください。");<br>
+                        String name = new java.util.Scanner(System.in).nextLine();<br>
+                        System.out.println("あなたの年齢を入力してください。");<br>
+                        int age = new java.util.Scanner(System.in).nextInt();<br>
+                    }<br>
+                }
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                あなたの名前を入力してください<br>
+                名前を入力する<br>
+                貴方の年齢を入力してください<br>
+                年齢を入力する
+            </code>
+        </div>
+    　ここまで型の変換と命令実行の文を説明していきました。次回は条件分岐と繰り返しについて説明していきたいと思います。
+    </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>
