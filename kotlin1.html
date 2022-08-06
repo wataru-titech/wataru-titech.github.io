@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99FMZG6LXG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-99FMZG6LXG');
+</script>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="isMqF1Bk1TWMG3m-T6oNrZ4V_bOdk3fh-WQXyHTBgzk" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/aboutpython.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="index.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+                  <li class="submenu">Java</a>
+                    <ul class="submenu">
+                        <li><a href="java1.html">Java1</a></li>
+                        <li><a href="java2.html">Java2</a></li>
+                        <li><a href="java3.html">Java3</a></li>
+                        <li><a href="java4.html">Java4</a></li>
+                        <li><a href="java5.html">Java5</a></li>
+                        <li><a href="java6.html">Java6</a></li>
+                        <li><a href="java7.html">Java7</a></li>
+                        <li><a href="java8.html">Java8</a></li>
+                    </ul>
+                    </li>
+                    <li class="submenu">Kotlin</a>
+                        <ul class="submenu">
+                            <li><a href="kotlin1.html">kotlin1</a></li>
+                            
+                        </ul>
+                    </li>
+              </ul>
+            </li>
+            <li><a><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                      </ul>
+
+                  </li>
+              </ul>
+            </li>
+            <li><a><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="zentai">
+    <h2 class="heading1" data-number="01">Kotlinについて</h2>
+    <p>
+        　KotlinはAndroidアプリ開発に非常に適した言語です。これを学ぶモチベーションは実際にAndroinアプリ開発を行いたいということです。
+        もちろんJavaでも開発はできますが、なぜKotlinをあえて用いるのでしょうか。それはKotlinが「実用主義、簡潔、安全」を目指した言語だからです。
+        Javaよりもシンプルにコードを書くことができます。その上に、Javaとの相互互換性があるため、JavaのプログラムをKotlinで簡単に利用することもできるのです。
+        Javaについての説明は他のページで行っているので、是非そちらを見てください。ここではKotlinの主な特徴を見ていきたいと思います。
+        KotlinはJavaと同じくJVMで動作します。そのため、<b>JavaとKotlinのソースファイルを自由に行き来することができます。</b>また、KotlinはJavaと同じく静的型付けで、オブジェクト指向のプログラミング言語となります。
+        Kotlinでは先進的な関数プログラミングの機能も取り入れらています。安全性についてもJavaよりも担保されています。例えば、静的型付け言語として型の安全性が保証されています。他にも
+        NullPointerExceptionをなくすためNullチェックが厳格になっています。このように、JavaとKotlinは兄弟関係のようなプログラミング言語ですが、KotlinはJavaをより簡潔にまとめたものであるという認識を
+        持てたと思います。
+    </p>
+    <h2 class="heading2" data-number="02">開発環境</h2>
+    <p>
+        　Kotlinの開発環境は今回<b>REPL</b>というものを使います。これは、<b>Android Studio 3.0以降</b>がインストールされていれば、使うことができます。
+        まずは、Android Studioをインストールすることをお勧めします。
+    </p>
+    <h2 class="heading3" data-number="03">Kotlinの基本</h2>
+    <p>
+        　開発環境が整ったらおなじみのHello World!を実行してみます。<b>Javaでは文末にセミコロンが必要でしたが、Kotlinでは省略できます。</b>
+        <div class="code">
+            <code>
+                println("Hello World!")
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                Hello World!
+            </code>
+        </div>
+        　それではKotlinの基本について説明していきます。まずは<b>変数と型</b>についてです。
+        Kotlinでは変数の宣言に<b>var</b>を使い、定数の宣言に<b>val</b>を使います。
+        <div class="code">
+            <code>
+                var 変数名:型=値<br>
+                val 定数名:型=値
+            </code>
+        </div>
+        　ただし、Kotlinには<b>型推論</b>の機能があるので、型の指定は省略可能です。
+        ここで注意なのが、変数や定数への2回目の代入はエラーになるということです。また、Kotlinの基本型はJavaとほとんど同じです。
+        ただKotlinのString型には、いくつかの特徴的な言語仕様があります。「"""」で囲むことで、複数行の文字列を扱うことができます。
+        以下にそのコードを示します。
+        <div class="code">
+            <code>
+                val multiline = """Oh<br>
+                    Hava a <br>
+                        nice Kotlin!"""<br>
+                println(multiline)
+            </code>
+        </div>
+        　また、先頭のスペースが不要なら<b>trimIndent()メソッド</b>が便利です。これを用いることで、文字列の前の不要なスペースをなくすことができます。
+        文字列に限らず比較には2種類あります。「==」は内容が同じであるかチェックします。「===」は2つのオブジェクトが同じであるかチェックします。
+        変数名にドル記号$をつけることで、文字列中にテンプレート式を埋め込むことができます。
+        全く関連のない型への変換には、<b>to型名</b>メソッドが用意されています。これについては以下にコードを示します。
+        <div class="code">
+            <code>
+                val str = "64"<br>
+                val intVal = str.toInt()<br>
+                println(intVal)
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                64
+            </code>
+        </div>
+        　変数strはString型で定義されています。それをint型にtoInt()を用いて、変換しています。
+        しかしこういった場合はエラーが生じます。
+        <div class="code">
+            <code>
+                val str = "Kotlin"<br>
+                val intVal = str.toInt()<br>
+                println(intVal)
+            </code>
+        </div>
+        　これは文字列を数値に変換したときに"Kotlin"は数値ではないので、Nullになるはずなのですが、toInt()のままでは
+        Nullにはなりません。そこで、<b>to型名OrNull()</b>を用います。これを用いることで、プログラムが正常に動作し、Nullになります。
+        他にも数値から文字列に変換する<b>toString()</b>メソッドや数値同士の変換するメソッドがあります。これらの基本形は<b>to型名</b>ということだけ強調しておきます。
+        先ほどNullという言葉が出てきました。これについて深く考えていきます。Nullとはプログラミング言語において何もデータが入っていないことを示します。Kotlinでは、宣言時に
+        型が指定されたり、型推論により型が確定した変数、定数には、Nullを代入することができません。これを<b>Null非許容型</b>といいます。 
+        そこで、Nullの状態もありうる場合、型名の後ろに<b>?</b>をつけます。これを<b>Null許容型</b>といいます。
+        <div class="code">
+            <code>
+                var text:String ?= null<br>
+                println(text) 
+            </code>
+        </div>    
+        <div class="code">
+            <code>
+                実行結果<br>
+                null
+            </code>
+        </div>  
+        ただし、null許容型の変数の場合、様々な制限があります。
+        具体的に言うと、例えばString?型の変数では、String型が持つメソッドやプロパティ(後述)をそのまま使うことはできません。
+        このような話はまた別のページで使用と思っていますので、今はそういうものかとくらいに考えておいてください。
+        続いて話は変わって<b>配列</b>について説明していきます。配列は<b>Arrayクラス</b>を使い、<b>arrayOf関数</b>で配列の生成と初期化を行うことができます。
+        <div class="code">
+            <code>
+                val arrayofInt:Array<int> = arrayOf(1,2,3,4,5,6)<br>
+                for(i in arrayofInt) print("$i,")
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                1,2,3,4,5,6
+            </code>
+        </div>
+        Arrayの後に続けて<>型名を渡しています。これは配列の中に入っているオブジェクトの型を指定しています。この場合はInt型配列であることを示しています。
+        Arrayクラスは総称型で宣言されており、Arrayの後に続けて<>を渡している値を型引数といいます。また、配列に対しても型推論が機能しますので、型を省略することができます。
+    </p>
+    <h2 class="heading4" data-number="04">簡単な算術計算</h2>
+    <p>
+        　基本的にPythonは電卓でできるような計算(例えば足し算や引き算)を行うことができます。+はいうまでもなく足し算を表します。
+        -は引き算、*は掛け算、**はべき乗を表します。他にも/は割り算、//は小数部を切り捨てた整数値(<b>商</b>)を返します。また、余りを求めたいときは%を用います。
+        少し話の内容から脱線しますが、Pythonでは一般にコード中に#が出現すると、それ以降の分はコメントとして扱われます。
+    </p>
+    <h2 class="heading5" data-number="05">リストとタプル</h2>
+    <p>
+        　Pythonでは配列に該当するものが二つ存在します。<b>リスト</b>と<b>タプル</b>です。
+        リストとタプルはほとんど同じですが、タプルで作成されたオブジェクトの要素は<b>変更できない</b>という特徴があります。
+        したがって変更したくないものをタプルを用いて定義します。この二つはともに複数の要素を格納するために用います。
+        <h4>リスト</h4>
+        <div class="code">
+            <code>
+                list = [数値,数値,数値]<br>
+                list = ["文字列","文字列","文字列"]
+            </code>
+        </div>
+        
+        <h4>タプル</h4>
+        <div class="code">
+            <code>
+                taple = (数値,数値,数値)<br>
+                taple = ("文字列","文字列","文字列")
+            </code>
+        </div>
+        
+    </p>
+    <h2 class="heading6" data-number="06">辞書</h2>
+    <p>
+        <div class="code">
+            <code>
+                d = {'key':value}<br>
+            </code>
+        </div>
+    
+    辞書はkeyとvalueで構成されます。d['key']を指定すればvalueを得ることができます。しかし
+    逆はできません。具体的にはd[value]を指定してkeyを得ることはできないということです。
+    </p>
+    </div>
+    <footer>
+        <p>Copyright (C) All Rights Reserved.</p>
+    </footer>
+</body>
