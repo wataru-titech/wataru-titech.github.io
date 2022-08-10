@@ -159,7 +159,7 @@
         そこで、Nullの状態もありうる場合、型名の後ろに<b>?</b>をつけます。これを<b>Null許容型</b>といいます。
         <div class="code">
             <code>
-                var text:String ?= null<br>
+                var text:String? = null<br>
                 println(text) 
             </code>
         </div>    
@@ -171,7 +171,7 @@
         </div>  
         　ただし、null許容型の変数の場合、様々な制限があります。
         具体的に言うと、例えばString?型の変数では、String型が持つメソッドやプロパティ(後述)をそのまま使うことはできません。
-        このような話はまた別のページで使用と思っていますので、今はそういうものかとくらいに考えておいてください。
+        このような話はまた別のページでしようと思っていますので、今はそういうものかとくらいに考えておいてください。
         続いて話は変わって<b>配列</b>について説明していきます。配列は<b>Arrayクラス</b>を使い、<b>arrayOf関数</b>で配列の生成と初期化を行うことができます。
         <div class="code">
             <code>
@@ -286,7 +286,7 @@
                 1,2,3,4,10,100
             </code>
         </div>  
-        　このようにしてfor文を使っていきます。ここでは配列の中身をfor文を用いて取り出しましたが、配列に割り振られた番号(添字)wotukatte
+        　このようにしてfor文を使っていきます。ここでは配列の中身をfor文を用いて取り出しましたが、配列に割り振られた番号(添字)を使って
         配列を順番に処理をしたい場合は、<b>indicesプロパティ</b>というものを使います。以下にその例を示します。
         <h4>indicesを使ったfor文</h4>
         <div class="code">
@@ -348,7 +348,7 @@
             </code>
         </div> 
         　範囲式で刻み値を指定して1つ飛ばしや2つ飛ばしをするには<b>step</b>を使います。
-        　for分以外にも繰り返しを行えるものはあります。<b>while文</b>と<b>do-while文<b>です。以下にその2つの例を示します。
+        　for分以外にも繰り返しを行えるものはあります。<b>while文</b>と<b>do-while文</b>です。以下にその2つの例を示します。
         <h4>while文</h4>
         <div class="code">
             <code>
@@ -387,7 +387,7 @@
         Kotlinのコレクションでは、読み取り専用のコレクションと変更可能なコレクションの2つが用意されています。変更する必要がない場合は読み取り専用
         のコレクションを使うことでバグを排除しコードを読みやすく保つことができます。
         まず、<b>リスト</b>について説明します。リストは配列と同じように要素の順番を保持しますが、要素の重複が可能です。
-        読み取り専用リストの作成と初期化には、<b>listOf関数</b>を使い、変更可能なリストの作成と初期化にはmutabaleListOf関数を使います。
+        読み取り専用リストの作成と初期化には、<b>listOf関数</b>を使い、変更可能なリストの作成と初期化には<b>mutabaleListOf関数</b>を使います。
         <h4>読み取り専用リストを作成</h4>
         <div class="code">
             <code>
@@ -429,6 +429,81 @@
             </code>
         </div> 
         　要素の追加には<b>addメソッド</b>、削除には<b>removeメソッド</b>を使用します。
+        　次に<b>セット</b>について説明します。セットは要素の順番を持たず、重複もできません。リスト同様に、読み取り専用と変更可能の2種類が用意されています。
+        <h4>読み取り専用セットの作成</h4>
+        <div class="code">
+            <code>
+                var Strings:set<String>=setOf("A","B","C")<br>
+                    println(set)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                [A,B,C]
+                
+            </code>
+        </div> 
+        <h4>変更可能なセットの作成</h4>
+        <div class="code">
+            <code>
+                var strings:Mutableset<String>=mutableSetOf("A","B","C")<br>
+                    println(strings)<br>
+                    strings.add("y")<br>
+                    println(strings)<br>
+                    strings.remove("A")<br>
+                    println(strings)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                [A,B,C,y]<br>
+                [B,C]
+            </code>
+        </div> 
+        　要素の追加、削除はリスト同様addメソッドとremoveメソッドで行います。前述の通り、セットでは値の重複ができませんが、すでにある
+        要素を追加してもエラーになるわけではありません。addメソッドの戻り値としてfalseが返るだけです。
+        　最後に<b>マップ</b>について説明します。マップはキーと値が対になった要素を持ちます。キーの重複はできないことに注意してください。
+        今まで同様に、読み取り専用マップと変更可能なマップが存在します。
+        <h4>読み取り専用マップの作成</h4>
+        <div class="code">
+            <code>
+                val fluits:Map<String, Int>=mapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
+                    print(fluits)<br>
+                    print(fluits.get["apple"])<br>
+                    print(fluits["orange"])
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                (apple=1, orange=2, banana=3)<br>
+                12
+            </code>
+        </div> 
+        　値の取り出しはgetメソッドの引数にキーを指定するか、配列のように[]内にキーを指定することで可能になります。
+        <h4>変更可能なマップの作成</h4>
+        <div class="code">
+            <code>
+                val fluits:MutableMap<String, Int>=MutableMapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
+                    print(fluits)<br>
+                    fluits.put("melon",4)<br>
+                    print(fluits)<br>
+                    fluits.remove("banana")<br>
+                    print(fluits)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                (apple=1, orange=2, banana=3)<br>
+                (apple=1, orange=2, banana=3, melon=4)<br>
+                (apple=1, orange=2, melon=4)<br>
+            </code>
+        </div> 
+        　要素を追加するときは<b>putメソッド</b>を使い、削除するときは<b>removeメソッド</b>を使います。以上Kotlinのコレクションには<b>list,set,map</b>の3つが存在することが
+        わかりました。
     </p>
     <h2 class="heading5" data-number="05">リストとタプル</h2>
     <p>
