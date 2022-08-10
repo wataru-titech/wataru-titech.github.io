@@ -169,7 +169,7 @@
                 null
             </code>
         </div>  
-        ただし、null許容型の変数の場合、様々な制限があります。
+        　ただし、null許容型の変数の場合、様々な制限があります。
         具体的に言うと、例えばString?型の変数では、String型が持つメソッドやプロパティ(後述)をそのまま使うことはできません。
         このような話はまた別のページで使用と思っていますので、今はそういうものかとくらいに考えておいてください。
         続いて話は変わって<b>配列</b>について説明していきます。配列は<b>Arrayクラス</b>を使い、<b>arrayOf関数</b>で配列の生成と初期化を行うことができます。
@@ -185,14 +185,250 @@
                 1,2,3,4,5,6
             </code>
         </div>
-        Arrayの後に続けて<>型名を渡しています。これは配列の中に入っているオブジェクトの型を指定しています。この場合はInt型配列であることを示しています。
+        　Arrayの後に続けて<>型名を渡しています。これは配列の中に入っているオブジェクトの型を指定しています。この場合はInt型配列であることを示しています。
         Arrayクラスは総称型で宣言されており、Arrayの後に続けて<>を渡している値を型引数といいます。また、配列に対しても型推論が機能しますので、型を省略することができます。
+        　次にKotlinの制御構造について説明していきます。
+        <h4>if文の書き方</h4>
+        <div class="code">
+            <code>
+               if(条件式){<br>
+                条件式がtrueの時に行う処理<br>
+               }else{<br>
+                <br>
+               }
+            </code>
+        </div> 
+        　Kotlinのif文は<b>値を返すことができます。</b>以下のような例です。
+        <div class="code">
+            <code>
+                val a=10<br>
+                val b=20<br>
+                val max = if(a>b){<br>
+                    print("a is greater than b")<br>
+                    a<br>
+                }else{<br>
+                    print("b is greater than a")<br>
+                    b<br>
+                }<br>
+                print(max)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                a is greater than b <br>
+                20
+            </code>
+        </div> 
+        　値を返す場合には、このように該当するブロックの最後に値を記述しておきます。これは変数でもリテラルでも構いません。
+        Kotlinにはswitch文は存在せず、次のwhen式を使います。
+        <h4>when文の書き方</h4>
+        <div class="code">
+            <code>
+                when(式){<br>
+                    値1 ->式の結果と値1が一致した場合の処理<br>
+                    値2 ->式の結果と値2が一致した場合の処理<br>
+                    else ->式の結果がどの値とも一致しない場合の処理<br>
+                }
+            </code>
+        </div> 
+        　このようにwhen式に渡した式の結果により、処理を分岐します。最後のelseには、上記のいずれでもない場合の処理を記述しますが、必須ではありません。
+        また、値を指定する場合、<b>in演算子</b>に続けて範囲式を記述することで、値の範囲を指定できます。以下にその例を示します。
+        <h4>範囲式を使う</h4>
+        <div class="code">
+            <code>
+                val a=100<br>
+                when (a){<br>
+                    in 1..10 ->println("a is in the range")<br>
+                    !in 10..20 ->println("a is outside the range")<br>
+                    else ->println("otherwise")<br>
+                }
+            </code>
+        </div> 
+        　when式もif文同様に、値を返すことができます。when式による型チェックも行うことができます。
+        <h4>型による条件分岐</h4>
+        <div class="code">
+            <code>
+                val a:Any = "Kotlin"<br>
+                when(a){<br>
+                    is Int->print(a*a)<br>
+                    is String->print(a.toUpperCase())<br>
+                }
+            </code>
+        </div> 
+        　<b>is演算子</b>というもので型のチェックをしています。<b>Any</b>はすべてのクラスの親にあたります。また、toUpperCase()は文字列を
+        大文字に変換するメソッドです。上記ではAny型で宣言したaに文字列を代入し、when式内で型チェックをしています。
+        if式の代わりにwhen式を使うことも可能です。以下のような例を見てみましょう。
+        <h4>if式のような使い方</h4>
+        <div class="code">
+            <code>
+                val a:Int? = null<br>
+                val text = "Kotlin"<br>
+                when{<br>
+                    a != null && text.startsWith("Kot")->println("starts with a prefix 'Kot'")<br>
+                    a == null && text.endsWith("lin")->println("ends with a suffix 'lin'")<br>
+                    else->println("otherwise")<br>
+                }
+            </code>
+        </div> 
+        　この例のようにwhen式引数を渡さずに、条件分岐をBoolean(trueかfalseをかえすもの)をかえす式とすることで、if文のような書き方をすることができます。
+        続いて<b>for文</b>について説明していきます。まず具体例を見てみましょう。
+        <h4>for文</h4>
+        <div class="code">
+            <code>
+                val array = arrayOf(1,2,3,4,10,100)<br>
+                for(a in array) print("$a,")
+            </code>
+        </div>
+        <div class="code">
+            <code>
+                実行結果<br>
+                1,2,3,4,10,100
+            </code>
+        </div>  
+        　このようにしてfor文を使っていきます。ここでは配列の中身をfor文を用いて取り出しましたが、配列に割り振られた番号(添字)wotukatte
+        配列を順番に処理をしたい場合は、<b>indicesプロパティ</b>というものを使います。以下にその例を示します。
+        <h4>indicesを使ったfor文</h4>
+        <div class="code">
+            <code>
+                val a = arrayOf(1,2,3,4,10,100)<br>
+                for (i in a.indices){<br>
+                    print("a[$i]=${a[i]}")<br>
+                }
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+               a[0]=1 a[1]=2 a[2]=3 a[3]=4 a[4]=10 a[5]=100
+            </code>
+        </div> 
+        　for文は先ほど出てきた範囲式を用いて、一定回数繰り返すことができます。色々な繰り返し方があるので、その例をいくつか以下に示します。
+        <h4>4回繰り返す</h4>
+        <div class="code">
+            <code>
+               for (i in 1..4){<br>
+                print(i)<br>
+               } 
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+               1234
+            </code>
+        </div> 
+        <h4>iの値を減算する</h4>
+        <div class="code">
+            <code>
+                for (i in 4 downTo 1){<br>
+                    print(i)<br>
+                }
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                4321
+            </code>
+        </div> 
+        　範囲式でカウントダウンするときは、<b>downTo</b>を用いればよいです。
+        <h4>stepを使う</h4>
+        <div class="code">
+            <code>
+                for (i in 0..9 step 2){<br>
+                    print(i)<br>
+                }
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                02468
+            </code>
+        </div> 
+        　範囲式で刻み値を指定して1つ飛ばしや2つ飛ばしをするには<b>step</b>を使います。
+        　for分以外にも繰り返しを行えるものはあります。<b>while文</b>と<b>do-while文<b>です。以下にその2つの例を示します。
+        <h4>while文</h4>
+        <div class="code">
+            <code>
+                var x=0<br>
+                while(x<10){<br>
+                    print(x++)<br>
+                }
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                0123456789
+            </code>
+        </div> 
+        <h4>do-while文</h4>
+        <div class="code">
+            <code>
+               var i=7<br>
+               do{<br>
+                print("i=${i--}")<br>
+               }while(i>4)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+               i=7 i=6 i=5 
+            </code>
+        </div> 
+        　以上が制御構文の説明でした。
     </p>
-    <h2 class="heading4" data-number="04">簡単な算術計算</h2>
+    <h2 class="heading4" data-number="04">Kotlinのコレクション</h2>
     <p>
-        　基本的にPythonは電卓でできるような計算(例えば足し算や引き算)を行うことができます。+はいうまでもなく足し算を表します。
-        -は引き算、*は掛け算、**はべき乗を表します。他にも/は割り算、//は小数部を切り捨てた整数値(<b>商</b>)を返します。また、余りを求めたいときは%を用います。
-        少し話の内容から脱線しますが、Pythonでは一般にコード中に#が出現すると、それ以降の分はコメントとして扱われます。
+        話は変わって<b>コレクション</b>というものについて説明します。複数の値をまとめて扱う機能をコレクションといいます。
+        Kotlinのコレクションでは、読み取り専用のコレクションと変更可能なコレクションの2つが用意されています。変更する必要がない場合は読み取り専用
+        のコレクションを使うことでバグを排除しコードを読みやすく保つことができます。
+        まず、<b>リスト</b>について説明します。リストは配列と同じように要素の順番を保持しますが、要素の重複が可能です。
+        読み取り専用リストの作成と初期化には、<b>listOf関数</b>を使い、変更可能なリストの作成と初期化にはmutabaleListOf関数を使います。
+        <h4>読み取り専用リストを作成</h4>
+        <div class="code">
+            <code>
+                val items:List<Int>=listOf(1,2,3)<br>
+                    println(items)<br>
+                    println(items.get[0])<br>
+                    println(items[0])<br>
+                    println(items.size)
+            </code>
+            <div class="code">
+                <code>
+                    実行結果<br>
+                    123<br>
+                    1<br>
+                    1<br>
+                    3
+                </code>
+            </div> 
+        </div> 
+        　getメソッドや配列のように[]を使って添字を指定することで、リストから値を取り出すことができます。また、sizeメソッドで
+        リストの長さを知ることができます。
+        <h4>変更可能なリストの作成</h4>
+        <div class="code">
+            <code>
+                val numbers:MutableList<Int>=mutableListOf(2,4,6)<br>
+                    println(numbers)<br>
+                    numbers.add(5)<br>
+                    println(numbers)<br>
+                    numbers.remove(4)<br>
+                    println(numbers)
+            </code>
+        </div> 
+        <div class="code">
+            <code>
+                実行結果<br>
+                246<br>
+                2465<br>
+                265
+            </code>
+        </div> 
+        　要素の追加には<b>addメソッド</b>、削除には<b>removeメソッド</b>を使用します。
     </p>
     <h2 class="heading5" data-number="05">リストとタプル</h2>
     <p>
