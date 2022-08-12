@@ -447,7 +447,7 @@
         <h4>変更可能なセットの作成</h4>
         <div class="code">
             <code>
-                var strings:Mutableset<String>=mutableSetOf("A","B","C")<br>
+                var strings:Mutableset=mutableSetOf("A","B","C")<br>
                     println(strings)<br>
                     strings.add("y")<br>
                     println(strings)<br>
@@ -469,7 +469,7 @@
         <h4>読み取り専用マップの作成</h4>
         <div class="code">
             <code>
-                val fluits:Map<String, Int>=mapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
+                val fluits:Map=mapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
                     print(fluits)<br>
                     print(fluits.get["apple"])<br>
                     print(fluits["orange"])
@@ -486,7 +486,7 @@
         <h4>変更可能なマップの作成</h4>
         <div class="code">
             <code>
-                val fluits:MutableMap<String, Int>=MutableMapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
+                val fluits:MutableMap=mutableMapOf("apple" to 1,"orange" to 2,"banana" to 3)<br>
                     print(fluits)<br>
                     fluits.put("melon",4)<br>
                     print(fluits)<br>
@@ -505,30 +505,87 @@
         　要素を追加するときは<b>putメソッド</b>を使い、削除するときは<b>removeメソッド</b>を使います。以上Kotlinのコレクションには<b>list,set,map</b>の3つが存在することが
         わかりました。
     </p>
-    <h2 class="heading5" data-number="05">リストとタプル</h2>
+    <h2 class="heading5" data-number="05">関数とラムダ式</h2>
     <p>
-        　Pythonでは配列に該当するものが二つ存在します。<b>リスト</b>と<b>タプル</b>です。
-        リストとタプルはほとんど同じですが、タプルで作成されたオブジェクトの要素は<b>変更できない</b>という特徴があります。
-        したがって変更したくないものをタプルを用いて定義します。この二つはともに複数の要素を格納するために用います。
-        <h4>リスト</h4>
+        　ここでは、Kotlinにおける関数の基本と、Kotlinが持つ関数型プログラミングの機能について説明していきます。
+        まず関数についてです。以下の例のように関数を定義します。
+        <h4>関数の定義と実行</h4>
         <div class="code">
             <code>
-                list = [数値,数値,数値]<br>
-                list = ["文字列","文字列","文字列"]
+                fun times(a:Int,b:Int):Int{<br>
+                    return a*b<br>
+                }<br>
+                times(2,5)<br>
+                実行結果<br>
+               res64: kotlin.Int = 10  
+                
             </code>
         </div>
-        
-        <h4>タプル</h4>
-        <div class="code">
+        　これはaとbの積を計算する関数です。この関数は<b>戻り値</b>が存在します。
+        戻り値とは、関数を実行したときに返ってくる値です。
+        それでは、戻り値がない場合の関数を見てみましょう。
+        <h4>戻り値のない関数</h4>
+        <div>
             <code>
-                taple = (数値,数値,数値)<br>
-                taple = ("文字列","文字列","文字列")
+                fun printTimes(a:Int,b:Int):Unit{<br>
+                    print("$a multiplied by $b is ${a*b}")<br>
+                }<br>
+                printTimes(2,3)<br>
+                実行結果<br>
+               2 multiplied by 3 is 6
             </code>
         </div>
-        
+        　Kotlinでは戻り値のない関数は<b>Unit</b>を使います。これはJavaでいうとvoidに該当します。
+        また、関数の引数にはデフォルト値を代入することができます。これにより、実行時に引数の指定を省略することができます。
+        このようなデフォルト値を関数を呼び出す際に、変更することも可能です。その時は、引数名をしっかりと明示することをお勧めします。
+        次に<b>ラムダ式</b>というものです。これから説明するのは、関数に値ではなく、処理を渡せるようにすることで動的に処理を変更する手法のことです。
+        この時、関数に渡す処理のことをラムダ式といいます。
+        それでは、具体的にコードを見ていきます。
+        <h4>ラムダ式の代入</h4>
+        <div>
+            <code>
+                var minus={x:Int,y:Int->x-y}<br>
+                minus(3,2)<br>
+                実行結果<br>
+                res66: kotlin.Int = 1
+
+            </code>
+        </div>
+        　この時の変数を<b>関数型</b>といいます。このように、引数名を指定した後に、関数に処理してもらいたいことを書きます。
+        ラムダ式の引数が1つしかない場合は、引数の指定と->の両方が省略可能です。省略した引数は暗黙の引数<b>it</b>として、
+        使うことができます。
+        <h4>itを使う</h4>
+        <div>
+            <code>
+                var double:(Int)->Int={it*2}<br>
+                double(4)<br>
+                実行結果<br>
+                res67: kotlin.Int = 8
+
+            </code>
+        </div>
+        　以下のように関数の引数に指定することもできます。
+        <h4>関数型の引数を持つ関数の定義と実行</h4>
+        <div>
+            <code>
+                fun doLambda(x:Int,l:(Int)->Int)=l(x)<br>
+                doLambda(5,{it*2})<br>
+                実行結果<br>
+                res68: kotlin.Int = 10
+
+            </code>
+        </div>
+        　関数型の引数のメリットは、実行時に処理の内容を決定できるということです。上記では
+        最初の引数を2番目の引数に従って処理するということだけ決めておいて、どういう処理を行うかは実行時に決定します。
     </p>
-    <h2 class="heading6" data-number="06">辞書</h2>
+    <h2 class="heading6" data-number="06">クラスとインタフェース</h2>
     <p>
+        　KotlinはJavaと強くかかわりがあるので、オブジェクト指向言語でもあります。そのため、クラスやインタフェースを使うことができます。
+        まずは、クラスの定義方法について説明していきます。Kotlinでは、「private」「protected」「internal」「public」の4つのアクセス修飾子が使われます。
+        Kotlinのクラスは、デフォルトでfinal(定数、継承禁止)扱いなので、そのままでは他のクラスを継承することができません。
+        継承させたい場合は、先頭に<b>open</b>を記述します。また、インナークラス(クラスの中のクラス)を定義し、内側のクラスから外側のクラスにアクセスする場合には<b>inner</b>を先頭に記述する必要があります。
+        クラスのインスタンスを生成する場合は、コンストラクタを実行します。(Javaではnew演算子が必要ですが、Kotlinでは不要)
+        
         <div class="code">
             <code>
                 d = {'key':value}<br>
