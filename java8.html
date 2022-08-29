@@ -56,12 +56,14 @@
             </li>
             <li><a><span>theory</span>理論系</a>
               <ul>
-                  <li class="submenu">重力波検出器
-                      <ul class="submenu">
-                          <li><a href="gravitywave.html">重力波</a></li>
-                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
-                          <li><a href="noise.html">雑音</a></li>
-                      </ul>
+                <li class="submenu">重力波検出器
+                    <ul class="submenu">
+                        <li><a href="gravitywave.html">重力波</a></li>
+                        <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                        <li><a href="noise.html">雑音</a></li>
+                        <li><a href="MICH.html">干渉計の感度計算</a></li>
+                    </ul>
+
 
                   </li>
               </ul>
@@ -87,161 +89,6 @@
         
 
 
-       <div class="code">
-            <code>
-                public class Hero{<br>
-                    String name = "ミナト";<br>
-                    int hp = 100;<br>
-                    public void attack(matango m){<br>
-                        したい内容を書く<br>
-                    }<br>
-                    public void run(){<br>
-                        したい内容を書く<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        　これが進化するにつれて、superHeroになるとします。superHeroはこれに加えて、空を飛ぶことができます。それをHeroクラスをもとに
-        作ったsuperHeroクラスを見てみます。
-        <div class="code">
-            <code>
-                public class superHero extends Hero{<br>
-                    boolean flying;<br>
-                    public void fly(){<br>
-                        したい内容を書く<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        　Heroクラスにfly()をコピペすれば、もちろんsuperHeroクラスを作成することができます。しかし、変更の都度コピペを繰り返していては、
-        手間がかかり効率が悪いです。そこで、<b>extends　元となるクラス</b>を用いた<b>継承</b>という機能を用います。これを用いることで、元となるクラスの
-        差分だけを記述して新たなクラスを宣言することができるのです。今回の例では、Heroクラスを継承してsuperHeroクラスを作りました。このような2つのクラスの関係を
-        <b>継承関係</b>といいます。元となるクラスを「親クラス」「スーパークラス」と呼び、新たに定義されるクラスを「子クラス」「サブクラス」と呼びます。
-        ここで注意すべきことは、複数のクラスを親として1つのクラスを定義する<b>多重継承</b>はJavaでは許されていないということです。
-        コードを書き進めていくと、クラスの中の記述内容を書き換えたいときが出てきます。これをいちいち書き換えていては、やはり効率が悪いように感じます。
-        そこで、親クラスを継承して子クラスを宣言する際に、親クラスのメンバを子クラス側で上書きすることができます。これを<b>オーバーライド</b>といいます。
-        以下にその例を示しておきます。
-        <div class="code">
-            <code>
-                public class superHero extends Hero{<br>
-                    boolean flying;<br>
-                    public void fly(){<br>
-                        したい内容を書く<br>
-                    }<br>
-                    //これが親クラスのメンバの上書きしたい内容<br>
-                    public void run(){<br>
-                        したい内容を書く<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        　上書きした内容を実際に呼び出してみます。
-        <div class="code">
-            <code>
-                public class Main{<br>
-                    public static void main(String[] args){<br>
-                        Hero h = new Hero();<br>
-                        h.run;<br>
-                        superHero sh = new superHero();<br>
-                        sh.run();<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        <div class="code">
-            <code>
-                実行結果<br>
-                Heroクラスのrun()の内容<br>
-                superHeroクラスで上書きされたrun()の内容
-            </code>
-        </div>
-        　このように親クラスのメンバの上書きを子クラスで行うことができます。また、親クラスのメンバに同じメンバがなければ、そのメンバは追加されることに
-        注意してください。ここですべてのクラスが継承できるのかという疑問を抱くと思います。結論から申し上げますとすべてのクラスを継承することはできません。
-        では、どのようなクラスが継承できないのでしょうか。これは、<b>宣言時にfinalがつけられているクラス</b>は継承できないというルールがあります。finalトいうことですから、
-        それは定数を表しています。つまり、定数として定義されたクラスは継承禁止ということなのです。また、宣言にfinalがつけられたメソッドは、<b>子クラスでオーバーライド</b>することができない
-        のも特徴としてあります。逆に言うと継承させたくないクラスやオーバーライドされたくないメソッドがあれば、宣言時にfinalをつければいいのです。
-        ここで継承を使いこなすには、より踏み込んで継承について考える必要があります。継承されたインスタンスのイメージは、superHeroの胸の中に普通のHeroとしての自分を秘めているとい
-        感じです。そのため、インスタンスの外部からメソッドの実行依頼が届くと、<b>極力、外側にある子インスタンス部分のメソッドで対応しようとします。</b>
-        ここで以下のようなコードを考えます。
-        <div class="code">
-            <code>
-                public class superHero extends Hero{<br>
-                    public void attack(Matango m){<br>
-                        System.out.println(this.name+"");<br>
-                        m.hp -= 5;<br>
-                        System.out.println("");<br>
-                        if (this.flying){<br>
-                            System.out.println("");<br>
-                            m.hp -= 5;
-                            System.out.println("");<br>
-                        }<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        　このコードでは空を飛んでいる状態でattack()すると、Heroでは1回だった攻撃を2回連続で繰り返すことができます。
-        しかし、これではHeroクラスのattack()内容が変更されたときに困ります。仮に与えるダメージを10にしたとしましょう。そうすると、本来なら
-        10ダメージを連続で食らわせることができますが、子クラスであるsuperHeroクラスで親クラスのattack()がオーバーライドされてしまうので、ダメージは5のままになってしまいます。
-        そこで、ダイレクトに親クラスのattack()を呼び出せたら、この問題を解決することができるでしょう。これを実現するのが<b>super</b>という予約語です。
-        これは「今より1つ内側のインスタンス部分」を表します。こうすることで、親インスタンス部分のメソッドやフィールドに子インスタンス部分からアクセスることができるようになりました。
-        <div class="code">
-            <code>
-                super.フィールド名<br>
-                super.メソッド名(引数)
-            </code>
-        </div>
-        ここまでHeroとsuperHeroを例に継承について考えてきました。インスタンス化されたsuperHeroは中にHeroのインスタンスをもつ多重構造になっていることが
-        ここまででわかりました。ここまで出来たら、JVMはsuperHero()コンストラクタを自動的に呼び出します。そうすると、Hero()コンストラクタも勝手に動作してしまうのです。
-        実は、Javaでは全てのコンストラクタは、その先頭で必ず内部インスタンス部分(親クラス)のコンストラクタを呼び出さなければいけないというルールがあります。
-        つまり、コンストラクタは内側のインスタンス部分のものから順に動いていくのです。このようにインスタンスが構築・初期化される手順を理解すると、ある条件で困ったことが発生します。
-        まずは以下のコードを見てください。
-        <h4>Item.javaファイル</h4>
-        <div class="code">
-            <code>
-                public class Item{<br>
-                    String name;<br>
-                    int price;<br>
-                    public Item(String name){<br>
-                        //処理内容<br>
-                    }<br>
-                    public Item(String name, int price){<br>
-                        //処理内容<br>
-                    }<br>
-                }
-            </code>
-        </div>
-        <h4>Weapon.javaファイル</h4>
-        <div class="code">
-            <code>
-                public class Weapon extends Item{//処理内容}
-            </code>
-        </div>
-        <h4>main.java</h4>
-        <div class="code">
-            <code>
-                public class Main{<br>
-                public static void main(String[] args){<br>
-                    Weapon w = new Weapon();<br>
-                }<br>
-                }
-            </code>
-        </div>
-        　このコードを実行するとエラー出てしまいます。その原因を探ってみましょう。Weapon.javaファイルに注目します。
-        <div class="code">
-            public Weapon(){<br>
-
-            }
-            </code>
-        </div>
-        　Main.javaファイルで二重構造のインスタンスを作り終えると、JVMは自動的にWeapon()コンストラクタを呼び出そうとします。しかし、Weaponクラスには
-        コンストラクタが定義されていないため、暗黙の了解で「デフォルトコンストラクタ」が定義され動作します。しかし全てのコンストラクタには先頭行に実は
-        super()が隠れていますので、親クラスのItemのコンストラクタを引数なしで予防とします。ここに問題点があります。呼び出されたItemクラスを見てみると、
-        引数1つのものと引数2つのもの、あわせて2つのコンストラクトが宣言されていますが、引数0のコンストラクトは存在しません。そのために、エラーが出るということになります。
-        そこで、super("引数")で親クラスのコンストラクトを呼んであげれば、エラーが出ずに実行できるというとになるのです。
-        ここまでで継承についての説明はほとんどすべて終わりました。最後に正しい継承、間違った継承について説明していきます。正しい継承とは「is-aの原則」というルールに従っている
-        継承のことです。これは、子クラスは親クラスの一種であると考え方です。間違った継承とはこの関係を満たしていない継承のことを言います。
-        では、間違った継承は何がいけないのでしょうか。理由は2点あります。<b>・将来、クラスを拡張していった場合に現実世界との矛盾が生じるから、・オブジェクト指向の3大機能の1つ多様性を利用できなくなるから</b>です。
-        現実世界との矛盾が生じないように継承することが大事なのです。
     </p>
     
            
