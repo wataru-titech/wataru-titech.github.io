@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head> 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99FMZG6LXG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-99FMZG6LXG');
+</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="isMqF1Bk1TWMG3m-T6oNrZ4V_bOdk3fh-WQXyHTBgzk" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="css_file/gravitywave.css">
+    <link rel="stylesheet" href="sanitize.css">
+    <title>wataru_website</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo"><img src="logo.png"></div>
+        <ul class="ddmenu">
+            <li><a href="index.html"><span>home</span>ホーム</a></li>
+            <li><a href="introduction.html"><span>introduction</span>自己紹介</a></li>
+            <li><a><span>program</span>プログラム</a>
+              <ul>
+                  <li class="submenu">Python</a>
+                  <ul class="submenu">
+                      <li><a href="python.html">Python0</a></li>
+                      <li><a href="aboutpython.html">Python1</a></li>
+                      <li><a href="aboutpython2.html">Python2</a></li>
+                      <li><a href="aboutpython3.html">Python3</a></li>
+                  </ul>
+                  </li>
+                  <li class="submenu">Java</a>
+                    <ul class="submenu">
+                        <li><a href="java1.html">Java1</a></li>
+                        <li><a href="java2.html">Java2</a></li>
+                        <li><a href="java3.html">Java3</a></li>
+                        <li><a href="java4.html">Java4</a></li>
+                        <li><a href="java5.html">Java5</a></li>
+                        <li><a href="java6.html">Java6</a></li>
+                        <li><a href="java7.html">Java7</a></li>
+                        <li><a href="java8.html">Java8</a></li>
+                    </ul>
+                    </li>
+                    <li class="submenu">Kotlin</a>
+                        <ul class="submenu">
+                            <li><a href="kotlin1.html">kotlin1</a></li>
+                            
+                        </ul>
+                    </li>
+              </ul>
+            </li>
+            <li><a><span>theory</span>理論系</a>
+              <ul>
+                  <li class="submenu">重力波検出器
+                      <ul class="submenu">
+                          <li><a href="gravitywave.html">重力波</a></li>
+                          <li><a href="gravitywavedetector_principle.html">原理</a></li>
+                          <li><a href="noise.html">雑音</a></li>
+                          <li><a href="MICH.html">干渉計の感度計算</a></li>
+                      </ul>
+
+                  </li>
+                  <li class="submenu">制御工学超入門
+                    <ul class="submenu">
+                        <li><a href="control_eng.html">制御とは</a></li>
+                        <li><a href="system_math_model.html">システムの数学モデル</a></li>
+                        <li><a href="transfer_function.html">伝達関数</a></li>
+                        <li><a href="frequency_characteristic.html">周波数特性</a></li>
+                        <li><a href="stability_system.html">システムの安定性</a></li>
+                        <li><a href="design_system.html">システムの設計</a></li>
+                        <li><a href="bonus.html">おまけ</a></li>
+                    </ul>
+                  </li>
+
+              </ul>
+            </li>
+            <li><a><span>experiment</span>実験系</a>
+             <ul>
+                 <li class="submenu"><a href="graduation_experiment.html">卒業研究</a></li>
+             </ul>
+            </li>
+        </ul>
+    </div>
+    
+<div class="zentai">
+    <h2 class="heading1" data-number="01">システムの数学モデル</h2>
+    <p>
+    　ここではシステムの数学モデルについて説明していきます。システムとは前回も説明しましたが、フィードバック制御系全体のことを指しています。
+    数学モデルと小難しい言い回しを使っていますが、簡単に言うと入出力関係を数学を使って表す方法です。数学的に表現するためにシステムの前提条件があるので、それをまず紹介します。
+    システムの前提条件として、<b>線形時不変システム</b>を考えます。これは後程詳しく説明します。通常、制御対象は非線形で、時変なシステムです。しかし、このままでは非常に複雑で、
+    取り扱うのは困難なため、<b>動作点(operating point)</b>といわれる所の周りで、システムを固定し、制御対象を線形で、時不変なシステムとして取り扱います。
+    <figure><img src="operatingpoint.png" alt="library"><figcaption>動作点(operatingpoint)</figcaption></figure>
+    　これが動作点です。この周りにシステムをロック(固定)することが、前提条件として必要になります。
+    それでは、線形時不変なシステムとは何でしょうか。この漢字の通り、線形な関係が時間によらず一定であるということです。
+    もう少し詳しく見ていきましょう。まず、あるシステムに$x_1(t)$,$x_2(t)$が入力され、それに対する出力を$y_1(t)$,$y_2(t)$とします。
+    すると、2つの線形条件を満たします。1.入力${x_1(t)+x_2(t)}$に対する出力は${y_1(t)+y_2(t)}$　2.aを定数とすると、入力$x_1(t)$に対する出力$y_1(t)$は$ax_1(t)$
+    これを時間とともに変化せず満たすシステムを<b>線形時不変システム</b>といいます。
+    ここまでで、前提条件が決まりました。それでは、入出力関係を記述していきたいと思います。
+    2つの方法で記述することができます。1つ目が<b>インパルス応答</b>を用いた方法、2つ目が<b>運動方程式</b>を用いた方法です。
+    まず1つ目について説明していきます。
+    <figure><img src="implus.png" alt="library"><figcaption>インパルス応答</figcaption></figure>
+    　任意の入力をインパルス入力の集まりと考えます。その出力は、インパルス応答とインパルス入力の積になります。
+    これを様々な時間で積分してやることで、全体の出力を表すことができます。この時、以下のような積分の形になります。
+    
+    \begin{align}
+    y(t) = \int_{-\infty}^{\infty} x(\tau)g(t-\tau)d\tau
+    \end{align}
+    　これを<b>畳み込み積分</b>といいます。つまり、任意の入力に対する出力は畳み込み積分で表すことができるのです。
+    次に2つ目について説明していきます。
+    <figure><img src="equation_motion.png" alt="library"><figcaption>運動方程式</figcaption></figure>
+    　このシステムの入出力関係は以下のようなn回微分方程式で表すことができます。
+    \begin{equation}
+        y^{(n)} (t)+a_{n-1} y^{(n-1)} (t)+...+a_1 y^{(1)}(t)+a_0 y(t) = b_m x^{(n)}(t)+b_{m-1} x^{(n-1)} (t)+...+b_1 x^{(1)}(t) (t)+b_0 x(t)
+    \end{equation}
+    　これは単純に運動方程式を立てて、それを解くことによって入出力関係を求めるというものです。
+    しかし、時間空間では運動方程式が複雑になり、厳密に解くことができません。そこで、次回はこの2つの方法を周波数空間に移し、考え直していきたいと思います。
+
+    
+    </p>
+    
+
+</div>
+<footer>
+    <p>Copyright (C) All Rights Reserved.</p>
+</footer>
+</body>
+     
